@@ -20,13 +20,10 @@ const UserSchema = mongoose.Schema({
     avatar: {
         type: String
     },
-<<<<<<< HEAD
     phone_number: {
         type: String,
         require:false
     },
-=======
->>>>>>> a5f46faff16a47087ba5a6c83318b810085b2cca
     create_at: {
         type: Date,
         default:Date.now

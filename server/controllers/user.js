@@ -41,28 +41,8 @@ const updateUserById = async (req, res) =>{
         res.status(400).json({message: err.message})
     }
 }
-
-<<<<<<< HEAD
-=======
-const deleteUserById = async (req, res) => {
-    try {
-        const {id} = req.params;
-        const response = await userModel.findByIdAndDelete(id);
-        res.status(200).json({message: "usuario eliminado exitosamente"})
-    } catch (err) {
-        res.status(400).json({message: err.message})
-    }
-}
-
->>>>>>> a5f46faff16a47087ba5a6c83318b810085b2cca
 module.exports = {
     createUser,
     getAllUsers,
-    getUserById,
-<<<<<<< HEAD
-    updateUserById
-=======
-    updateUserById,
-    deleteUserById
->>>>>>> a5f46faff16a47087ba5a6c83318b810085b2cca
+    getUserById
 };
