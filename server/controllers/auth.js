@@ -1,9 +1,10 @@
 const userModel = require("../models/user");
 const {generateToken, refreshToken} = require("../utils/jwt");
 const bcrypt =  require("bcrypt");
+import jwt from 'jsonwebtoken';
 
 const signin = async(req, res) => {
-    const {firstname, lastname, email, current_password} = req.body;
+    const {firstname, lastname, email, current_password, phone} = req.body;
     try {
         if (!email){
             res.status(400).json({ message : "el email es requerido"});
@@ -21,7 +22,8 @@ const signin = async(req, res) => {
             firstname,
             lastname,
             email: emailLowerCase,
-            current_password: current_password_hash
+            current_password: current_password_hash,
+            phone: phone
         });
 
         const userStore = await newUser.save();
@@ -81,7 +83,31 @@ const getMe = async(req, res) => {
         res.status(400).json({message: err.message})
     }
 }
+const login_validation = async(req, res) => {
+    
 
+    const { email } = req.body;
+
+    const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '15m' });
+    const resend = new Resend('re_No71uL9z_B8V69uEgVUJe4UpkgBkkEa5i');
+    const magicLink = `${req.headers.origin}/api/verify?token=${token}`;
+
+    resend.emails.send({
+        from: 'victorgamers123456@gmail.com',
+        to: email,
+        subject: 'Hello World',
+        html: `<p>Click on this link to log in: ${magicLink}</p>`
+    });
+    res.status(200).json({ success: true });
+}
+
+const register = async(req,res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
 module.exports = {
     signin,
     login,

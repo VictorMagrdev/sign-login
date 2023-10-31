@@ -44,5 +44,6 @@ const updateUserById = async (req, res) =>{
 module.exports = {
     createUser,
     getAllUsers,
-    getUserById
+    getUserById,
+    updateUserById
 };

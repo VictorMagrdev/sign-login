@@ -1,7 +1,5 @@
 const express = require("express")
 const cors = require('cors');
-//app conecta por puerto local express
-//especificar los middleware a utilizar
 
 const app = express();
 const userController = require("../server/routes/user")

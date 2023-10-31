@@ -1,21 +1,9 @@
 const mongoose = require("mongoose")
 const AuthSchema = mongoose.Schema({
-    firstname: {
-        type: String,
-        require:true
-    },
-    lastname: {
-        type: String,
-        require:true
-    },
     email: {
         type: String,
         require:true,
         unique:true
-    },
-    role: {
-        typer: String,
-        default: "user",
     },
     active: {
         type: Boolean,
@@ -24,9 +12,6 @@ const AuthSchema = mongoose.Schema({
     current_password: {
         type: String,
         require:true
-    },    
-    avatar: {
-        type: String
     },
     create_at: {
         type: Date,
